@@ -4,19 +4,37 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float player1spd = 5;
+    public float playerspd = 10;
+    public float knockback = 1;
+    public int Player = 0;
     Rigidbody myRigidbody;
-    float h;
-    float v;
+    private Vector3 move;
+    private float h = 0;
+    private float v = 0;
     // Start is called before the first frame update
     void Start()
     {
-        Rigidbody myRigidbody = GetComponent<Rigidbody>();
+        myRigidbody = gameObject.GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        h = Input.GetAxis("Horizontal");
+        if (Player == 0)
+        {
+            h = Input.GetAxis("Horizontal1");
+            v = Input.GetAxis("Vertical1");
+        }
+        else if (Player == 1)
+        {
+            h = Input.GetAxis("Horizontal2");
+            v = Input.GetAxis("Vertical2");
+        }
+        move = new Vector3(h, 0 ,v);
+        myRigidbody.AddForce(move * playerspd);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        myRigidbody.AddForce(-move * knockback,ForceMode.Impulse);
     }
 }
