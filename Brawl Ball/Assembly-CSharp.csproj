@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Game.cs" />
     <Compile Include="Assets\Scripts\Movement.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Martin/Documents/Infoprojekt/Martin-PK-Informatikprojekt/Brawl Ball/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
